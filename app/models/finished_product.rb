@@ -1,2 +1,4 @@
-class FinishedProduct < ApplicationRecord
-end
+class FinishedProduct< ActiveRecord::Base
+    belongs_to :user
+    belongs_to :retailer
+  end
