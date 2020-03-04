@@ -1,0 +1,2 @@
+class FinishedProduct < ApplicationRecord
+end
