@@ -1,0 +1,3 @@
+class FinishedProducts < ApplicationController
+    
+end
