@@ -1,3 +1,3 @@
-class FinishedProducts < ApplicationController
+class FinishedProductsController < ApplicationController
     
 end

@@ -1,3 +1,3 @@
-class Retailers < ApplicationController
+class RetailersController < ApplicationController
     
 end
