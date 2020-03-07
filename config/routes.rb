@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   get '/logout' => 'sessions#destroy'
   resources :users, only[:create, :show]
-  resources :retailers
-  
-  resources :finished_products, only: [:new, :create, :edit, :update, :destroy]
+  resources :retailers do
+    resources :finished_products
+  end
+  post "/retailers/:id/finishedproducts/new" => 'finishedproducts#add', as: 'add_finished_product' 
 
 end
