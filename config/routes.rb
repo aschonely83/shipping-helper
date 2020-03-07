@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
   get '/logout' => 'sessions#destroy'
-  resources :users, only[:create, :show]
+  resources :users, only: [:create, :show]
   resources :retailers do
     resources :finished_products
   end
