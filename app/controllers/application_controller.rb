@@ -20,6 +20,5 @@ class ApplicationController < ActionController::Base
   
     def require_logged_in
       redirect_to controller: 'sessions', actions: 'new', alert: "Please log in" unless user_is_authenticated
-    end
-  end  
+    end 
 end
