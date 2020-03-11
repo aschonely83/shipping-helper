@@ -1,0 +1,12 @@
+<%= form_for :user  do |f| %>
+
+  <%= f.label :email, "Email Address" %>
+  <%= f.text_field :email, class: "shortInput" %> <br />
+
+  <%= f.label :password %>
+  <%= f.password_field :password, class: "shortInput" %> <br />
+
+
+  <%= f.submit "Create User", class: "button createUser" %>
+
+<% end %>
