@@ -2,12 +2,12 @@
 
 <%= form_for :user, url: signup_path  do |f| %>
   <p>
-  <%= f.label Email: %>
+  <%= f.label :email %>
   <div><%= f.text_field :email %></div>
   </p>
   
   <p>
-  <%= f.label Password: %>
+  <%= f.label :password %>
   <div><%= f.password_field :password %></div>
   </p>
 
