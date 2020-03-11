@@ -10,6 +10,19 @@
   </head>
 
   <body>
+
+  <div class="topnav">
+      <% if user_is_authenticated%>
+
+        <span><a href="/retailers">Retailers</a></span>
+        <span><a href="/">Home</span>
+        <span ><a href="/logout">Log Out</a></span>
+
+      <% else %>
+        <span ><a href="/signup">Sign Up</a></span>
+        <span ><a href="/login">Log In</a></span>
+      <% end %>  
+    </div>
     <%= yield %>
   </body>
 </html>
