@@ -3,21 +3,25 @@ class RetailersController < ApplicationController
     @retailer = Retailer.new
   end
 
-  def index
-    @retailers = Retailer.all
-  end
-
-  def create
+   def create
     @retailer = Retailer.new(retailer_params)
     if @retailer.save
-      redirect_to retailers_path
+      redirect_to retailers_path(@retailer)
     else  
       render :new
     end
   end
 
+  def index
+    @retailers = Retailer.all
+  end
+
   def show
-    @retailer = Retailer.find(params[:id])
+    @user = User.find(@retailer.user_id)
+  end
+
+  def edit
+    
   end
 
   private
