@@ -1,21 +1,37 @@
 class SessionsController < ApplicationController
+  
+  def index
+
+  end
+  
   def new
-    
+    @user = User.new
   end
   
   def create 
-    @user = User.find_by(email: params[:email])
-    if @user && @user.authenticate(params[:password])
+    @user = User.find_by(email: params[:user][:email])
+    if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      flash[:errors] = "Invalid email/password. Try again"
-      render 'new'
+      redirect_to login_path, alert: "User not found. Try again."
     end
+  end
+
+  def edit
+
+  end
+
+  def show
+    @user = User.find_by_id(params[:id])
+  end
+
+  def update
+
   end
   
   def destroy
-    session.delete :user_id
+    session.clear
     redirect_to root_path
   end
 end

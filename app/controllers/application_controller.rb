@@ -1,22 +1,19 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user
-  helper_method :user_is_authenticated
-  helper_method :require_logged_in 
-  
-    private
-  
-    def user_is_authenticated
-      !!current_user
-    end
+  before_action :require_login, only: [:new, :create, :show, :index]
+  helper_method :current_user, :logged_in?
+    
       
-    def current_user
-      User.find_by(id: session[:user_id])
-    end
+  def current_user
+    @user ||= User.find_by_id(session[:user_id])
+  end
   
-    def require_logged_in
-      unless user_is_authenticated
-        flash[:errors] = "Please Log In to continue"
-        redirect_to controller: 'sessions', action: 'new'
-      end
-    end 
+  def require_login
+    if current_user.nil?
+      redirect_to login_path
+    end
+  end
+
+  def logged_in?
+    session[:user_id] ? true : false
+  end
 end
