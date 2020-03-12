@@ -1,0 +1,18 @@
+<% flash.each do |type, msg| %>
+    <div id="error-explanation">
+      <div><%= msg %></div>
+    </div>
+<% end %>
+
+  <br />
+
+<%= render 'form' %>
+
+<br />
+
+    <div class="text">Please Sign Up or Log In</div>
+
+    <div class="button" onclick="location.href='/signup'">
+        <div>Sign Up</div>
+    </div>
+</div>
