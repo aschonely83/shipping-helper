@@ -3,3 +3,18 @@
 <br />
 
 
+<% if user_is_authenticated %>
+  <div class="button" onclick="location.href='/retailers'">
+    <div>Retailers</div>
+  </div>
+  <div class="button" onclick="location.href='/logout'">
+    <div>Log Out</div>
+  </div>
+<% else %>
+  <div class="button" onclick="location.href='/signup'">
+    <div>Sign Up</div>
+  </div>
+  <div class="button" onclick="location.href='/login'">
+    <div>Log In</div>
+  </div>
+<% end %>
