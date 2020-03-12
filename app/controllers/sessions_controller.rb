@@ -6,10 +6,11 @@ class SessionsController < ApplicationController
   def create 
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user_id
+      session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      render '/'
+      flash[:errors] = "Invalid email/password. Try again"
+      render 'new'
     end
   end
   
