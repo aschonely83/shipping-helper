@@ -1,27 +1,16 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 root 'welcome#home'
-get	'/signup', to: 'welcome#signup'
-post '/signup', to: 'user#create' 
-get '/login', to: 'sessions#new'
-post '/login', to: 'sessions#create'
-post '/logout', to: 'sessions#destroy'
-get	'/logout', to: 'sessions#destroy'
-post '/users', to: 'users#create'
-get	'/users/:id', to: 'users#show'
-get	'/retailers/:retailer_id/finished_products', to: 'finished_products#index'
-post '/retailers/:retailer_id/finished_products', to: 'finished_products#create'
-get	'/retailers/:retailer_id/finished_products/new', to: 'finished_products#new'
-get	'/retailers/:retailer_id/finished_products/:id/edit', to: 'finished_products#edit'
-get	'/retailers/:retailer_id/finished_products/:id', to: 'finished_products#show'
-patch '/retailers/:retailer_id/finished_products/:id', to: 'finished_products#update'
-delete '/retailers/:retailer_id/finished_products/:id', to: 'finished_products#destroy'
-get	'/retailers', to: 'retailers#index'
-post '/retailers', to: 'retailers#create'
-get	'/retailers/new', to: 'retailers#new'
-get	'/retailers/:id/edit', to: 'retailers#edit'
-get	'/retailers/:id', to: 'retailers#show'
-patch '/retailers/:id', to: 'retailers#update'
-delete '/retailers/:id', to: 'retailers#destroy'
-post '/retailers/:id/finishedproducts/new', to: 'finishedproducts#add'
+resources :users
+resources :retailers
+resources :finished_products
+
+
+get '/login' => 'sessions#new'
+post '/login' => 'sessions#create'
+post '/logout' => 'sessions#destroy'
+
+
+get	'/signup' => 'welcome#signup'
+post '/signup' => 'user#create' 
 end
