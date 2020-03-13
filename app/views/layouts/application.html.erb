@@ -11,18 +11,10 @@
 
   <body>
 
-  <div class="topnav">
-      <% if logged_in?%>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
-        <span><a href="/retailers">Retailers</a></span>
-        <span><a href="/">Home</span>
-        <span ><a href="/logout">Log Out</a></span>
-
-      <% else %>
-        <span ><a href="/signup">Sign Up</a></span>
-        <span ><a href="/login">Log In</a></span>
-      <% end %>  
-    </div>
+  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
     <%= yield %>
   </body>
 </html>

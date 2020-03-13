@@ -1,0 +1,9 @@
+<%= form_for [@retailer, @retailer.finished_products.build] do |f| %>
+    <%= f.label :product %><br>
+    <%= f.text_field :product %><br><br>
+    <%= f.label :quantity %><br>
+    <%= f.text_field :quantity %><br><br>
+
+    <%= f.submit %>
+
+<% end %>

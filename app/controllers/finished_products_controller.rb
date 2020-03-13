@@ -8,9 +8,10 @@ class FinishedProductsController < ApplicationController
   end
 
   def create
+    byebug
     @finished_product = Finished_Product.new(finished_product_params)
     finished_product.save
-    redirect_to retailer_finished_product_path
+    redirect_to retailer_finished_product_path(@finished_product.retailer, @finished_product)
   end
 
   private
