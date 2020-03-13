@@ -17,7 +17,7 @@ class RetailersController < ApplicationController
   end
 
   def show
-    @user = User.find(@retailer.user_id)
+   
   end
 
   def edit
