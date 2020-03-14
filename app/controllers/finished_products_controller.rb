@@ -6,11 +6,10 @@ class FinishedProductsController < ApplicationController
 
   def index
       if params.include?(:retailer_id)
-      @finished_products = @retailer.finished_products
-         # render finished_products_path
+        @finished_products = @retailer.finished_products
+         
       else
           @finished_products = @user.finshed_products
-         # render finished_products_path
       end
   end
 
@@ -33,15 +32,15 @@ class FinishedProductsController < ApplicationController
   end
 
   def edit
-       
+    @finished_product = FinishedProduct.find(params[:id]) 
   end
 
   def update
-      if @finished_product.update(finished_product_params)
-          redirect_to retailer_finished_product_path(@finished_product)
-      else
-          render :edit
-      end
+    if @finished_product.update(finished_product_params)
+      redirect_to retailer_finished_products_path
+    else
+      render :edit
+    end
   end
 
   def destroy
