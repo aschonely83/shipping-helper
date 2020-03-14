@@ -1,3 +1,8 @@
 <h1>Editing <%= @retailer.name %></h1>
 
-<%= render 'retailer'%>
+<%= form_for(@retailer) do |f| %>
+  <label>Retailer Name:</label><br>
+  <%= f.text_field :name %><br>
+
+  <%= f.submit %>
+<% end %>

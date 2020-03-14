@@ -4,13 +4,19 @@ class RetailersController < ApplicationController
   end
 
   def create
-    @retailer = Retailer.create(retailer_params)
-    @retailer.user.id = current_user.id
-    if @retailer.save
-      redirect_to retailers_path(@retailer)
-    else  
-      render :new
-    end
+    @retailer = Retailer.create(retailer_params(:name, :schedule))
+    @retailer.save
+    redirect_to retailer_path(@retailer)
+  end
+
+  def edit
+    @retailer = Retailer.find(params[:id])
+  end
+
+  def update
+    @retailer = Retailer.find(params[:id])
+    retailer.update(retailer_params(:name))
+    redirect_to retailer_path(@retailer)
   end
 
   def index
@@ -29,7 +35,7 @@ class RetailersController < ApplicationController
 
   private
 
-  def retailer_params
-    params.required(:retailer).permit(:name, :schedule)
+  def retailer_params(*args)
+    params.required(:retailer).permit(*args)
   end
 end

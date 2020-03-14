@@ -8,14 +8,24 @@ class FinishedProductsController < ApplicationController
   end
 
   def create
-    @finished_product = Finished_Product.new(finished_product_params)
+    @finished_product = Finished_Product.new(finished_product_params(:product, :quantity))
     finished_product.save
+    redirect_to retailer_finished_product_path(@finished_product.retailer, @finished_product)
+  end
+
+  def edit
+    @finished_product = Finished_Product.find(params[:id])
+  end
+
+  def update
+    @finished_product = Finished_Product.find(params[:id])
+    @finished_product.update(finished_product_params(:product))
     redirect_to retailer_finished_product_path(@finished_product.retailer, @finished_product)
   end
 
   private
 
-  def finished_product_params
-    params.require(:finished_product).permit(:product, :quantity, :user_id, :retailer_id)
+  def finished_product_params(*args)
+    params.require(:finished_product).permit(*args)
   end
 end
