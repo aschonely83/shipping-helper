@@ -1,0 +1,3 @@
+<h3><%= @finished_product.product %><span></span><%= @finished_product.quantity %></h3>
+<%= link_to("Edit", edit_retailer_finished_product_path(@finished_product)) %>
+<%= link_to "Delete Finished Product", retailer_finished_product_path(current_user, @finished_product), method: :delete, data: { confirm: "This finished product will be deleted. Are you sure?"} %>

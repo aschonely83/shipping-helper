@@ -1,0 +1,11 @@
+<h1>Name: <%= @retailer.name %></h1>
+
+<p><strong>
+    Schedule: <%= @retailer.schedule %>
+</p></strong>
+<p>
+  <%= link_to("Add finshed product for this retailer", new_retailer_finished_product_path(@retailer)) %>
+</p>
+
+
+<%= link_to("Edit Retailer", edit_retailer_path(@retailer)) %> | <%= link_to("Delete Retailer", retailer_path(@retailer), data: {method: :delete, confirm: "Are you sure you want to delete this retailer?"}) %>

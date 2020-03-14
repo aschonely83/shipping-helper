@@ -1,31 +1,70 @@
 class FinishedProductsController < ApplicationController
-  def new
-    @finished_product = Finished_Product.new
-  end
+  before_action :authenticate_user!
+  before_action :get_retailer
+  before_action :get_user
+  before_action :set_finished_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @finished_products = Finished_Product.all
+      if params.include?(:retailer_id)
+      @finished_products = @retailer.finished_products
+         # render finished_products_path
+      else
+          @finished_products = @user.finshed_products
+         # render finished_products_path
+      end
+  end
+
+  def show
+    @finished_product = FinishedProduct.find_by(params[:id])
+  end
+      
+  def new
+    @finished_product = @user.finished_products.build
   end
 
   def create
-    @finished_product = Finished_Product.new(finished_product_params(:product, :quantity))
-    finished_product.save
-    redirect_to retailer_finished_product_path(@finished_product.retailer, @finished_product)
+      @finished_product = @user.finished_products.build(finished_product_params)
+      @finished_product.retailer_id = @retailer.id
+      if @finished_product.save
+          redirect_to retailer_finished_products_path(@retailer)
+      else
+          render :new
+      end
   end
 
   def edit
-    @finished_product = Finished_Product.find(params[:id])
+       
   end
 
   def update
-    @finished_product = Finished_Product.find(params[:id])
-    @finished_product.update(finished_product_params(:product))
-    redirect_to retailer_finished_product_path(@finished_product.retailer, @finished_product)
+      if @finished_product.update(finished_product_params)
+          redirect_to retailer_finished_product_path(@finished_product)
+      else
+          render :edit
+      end
+  end
+
+  def destroy
+      @finished_product.destroy
+      redirect_to retailer_finished_products_path
   end
 
   private
 
-  def finished_product_params(*args)
-    params.require(:finished_product).permit(*args)
+  def get_user
+      @user = current_user
   end
+
+  def get_retailer
+      @retailer = Retailer.find_by(params[:retailer_id])
+  end
+
+  def set_finished_product
+      @finished_product= @retailer.finished_products.find(params[:id])
+  end
+
+  def finished_product_params
+      params.require(:finished_product).permit(:product, :quantity, :users_attributes => [:user_id], :retailers_attributes => [:retailer_id])
+  end
+
 end
