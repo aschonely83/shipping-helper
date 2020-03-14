@@ -3,6 +3,7 @@
 <%= form_for(@retailer) do |f| %>
   <label>Retailer Name:</label><br>
   <%= f.text_field :name %><br>
-
+  <label>Schedule:</label><br>
+  <%= f.text_field :schedule %><br>
   <%= f.submit %>
 <% end %>
