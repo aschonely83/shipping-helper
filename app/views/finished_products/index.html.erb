@@ -1,14 +1,14 @@
-<h2>Finished Product:</h2>
-
 <% @finished_products.each do |finished_product| %>
-<fieldset>
-    <h4>Finished Product for <%= finished_product.retailer.name %></h4>
+
+  <% @finished_products.each do |finished_product| %>
+    <h2>Finished Product for <%= finished_product.retailer.name %></h2>
     <p>
-       <%= finished_product.quantity %> Boxes<br />
+      <%= finished_product.quantity %> Boxes<br />
       <%= finished_product.product %> 
     </p>
+  <% end %>
     
-    <%= link_to "Edit", retailer_finished_product_path(@retailer, finished_product) %> |
+    <%= link_to "Edit", edit_retailer_finished_product_path(@retailer, finished_product) %> |
     <%= link_to "Delete", [@retailer, finished_product], method: :delete, data: { confirm: 'Are you sure?' } %>
-</fieldset>
+
 <% end %>

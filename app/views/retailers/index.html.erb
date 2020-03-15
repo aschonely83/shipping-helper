@@ -1,14 +1,7 @@
 <h1>Current Retailers</h1>
 
 <% @retailers.each do |retailer| %>
-    <fieldset>
-    <p>
-        <%= link_to retailer.name, retailer_path(retailer) %>
-    </p>
-    <p>
-        <strong>Schedule: <%= retailer.schedule %></strong>
-    </p>
-    
-   
-    </fieldset>
+  
+  <%= link_to retailer.name, retailer_path(retailer) %>
+  <h3>Schedule: <%= retailer.schedule %></h3>
 <% end %>

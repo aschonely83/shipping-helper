@@ -1,12 +1,3 @@
 <h2>Edit Finished Product</h2>
 
-<%= form_tag retailer_finished_products_path do %>
-  <label>Product:</label><br>
-  <%= text_field_tag :product %><br>
- 
-  <label>Quantity</label><br>
-  <%= text_area_tag :quantity %><br>
- 
-  <%= submit_tag "Submit Finished Product" %>
-<% end %>
-  
+<%= render 'form'%>
