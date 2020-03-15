@@ -1,3 +1,8 @@
 <h2>Edit Finished Product</h2>
-
-<%= render 'form'%>
+<%= form_for [@retailer, @finished_product] do |f| %>
+  <label>Product:</label><br>
+  <%= f.text_field :product %><br>
+  <label>Quantity:</label><br>
+  <%= f.text_field :quantity %><br>
+  <%= f.submit %>
+<% end %>

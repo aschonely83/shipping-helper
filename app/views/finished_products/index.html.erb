@@ -3,7 +3,7 @@
   <% @finished_products.each do |finished_product| %>
     <h2>Finished Product for <%= finished_product.retailer.name %></h2>
     <p>
-      <%= finished_product.quantity %> Boxes<br />
+      <%= finished_product.quantity %><br /> 
       <%= finished_product.product %> 
     </p>
   <% end %>
