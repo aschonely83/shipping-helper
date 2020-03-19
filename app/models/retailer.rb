@@ -5,7 +5,7 @@ class Retailer < ActiveRecord::Base
 
   def name_and_schedule
     if name.blank? && schedule.blank?
-      errors.add(:name,:schedule, "You must enter a name and schedule")
+      errors.add(:name, "You must enter a name and schedule")
     end
   end
 end
