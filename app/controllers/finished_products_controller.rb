@@ -32,15 +32,14 @@ class FinishedProductsController < ApplicationController
   end
 
   def edit
-       
   end
 
   def update
     if @finished_product.update(finished_product_params)
-      redirect_to retailer_finished_product_path(@finished_product),  notice: 'Finished Product has been updated'
+      redirect_to retailer_path(@finished_product.retailer),  notice: 'Finished Product has been updated' 
     else
       render :edit
-    end
+    end  
   end
 
   def destroy
