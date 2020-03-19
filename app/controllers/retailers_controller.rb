@@ -22,7 +22,7 @@ class RetailersController < ApplicationController
   def create
     @retailer = Retailer.new(retailer_params)
     if @retailer.save
-      redirect_to retailer_path(@retailer)
+      redirect_to retailer_path(@retailer),  notice: "Retailer was successfully created"
     else
       render :new
     end
@@ -30,7 +30,7 @@ class RetailersController < ApplicationController
 
   def update
     if @retailer.update(retailer_params)
-      redirect_to retailer_path(@retailer)
+      redirect_to retailer_path(@retailer), notice: 'Retailer has been updated'
     else 
       render :edit
     end
@@ -38,7 +38,7 @@ class RetailersController < ApplicationController
 
   def destroy
     @retailer.destroy
-    redirect_to retailers_path
+    redirect_to retailers_path, notice: 'Retailer has been deleted'
   end
 
   private

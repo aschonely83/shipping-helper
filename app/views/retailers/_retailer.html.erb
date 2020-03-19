@@ -1,3 +1,16 @@
+<% if @retailer.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@retailer.errors.count, "error") %> prohibited this retailer from being saved:</h3>
+ 
+    <ul>
+    <% @retailer.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <%= form_for @retailer do |f| %>
     <%= f.label :name %><br>
     <%= f.text_field :name %><br><br>

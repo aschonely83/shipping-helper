@@ -25,7 +25,7 @@ class FinishedProductsController < ApplicationController
     @finished_product = @user.finished_products.build(finished_product_params)
     @finished_product.retailer_id = @retailer.id
     if @finished_product.save
-      redirect_to retailer_finished_products_path(@retailer)
+      redirect_to retailer_finished_products_path(@retailer), notice: "Product was successfully created"
     else
       render :new
     end
@@ -37,7 +37,7 @@ class FinishedProductsController < ApplicationController
 
   def update
     if @finished_product.update(finished_product_params)
-      redirect_to retailer_finished_product_path(@finished_product)
+      redirect_to retailer_finished_product_path(@finished_product),  notice: 'Finished Product has been updated'
     else
       render :edit
     end
@@ -45,7 +45,7 @@ class FinishedProductsController < ApplicationController
 
   def destroy
     @finished_product.destroy
-    redirect_to retailer_finished_products_path
+    redirect_to retailer_finished_products_path, notice: 'Finished Product has been deleted'
   end
 
   private

@@ -1,3 +1,16 @@
+<% if @finished_product.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@finished_product.errors.count, "error") %> prohibited this finshed product from being saved:</h3>
+ 
+    <ul>
+    <% @finished_product.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <%= form_for [@retailer, @retailer.finished_products.build] do |f| =%> 
     <%= f.label :product %><br>
     <%= f.text_field :product %><br><br>
